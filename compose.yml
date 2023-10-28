@@ -1,0 +1,22 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_DB: zenmoneydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: d34gj8h9qNn
+    volumes:
+      - type: volume
+        source: zenmoneydb
+        target: /var/lib/postgresql/data
+      - type: bind
+        source: ./init
+        target: /docker-entrypoint-initdb.d
+      
+    ports:
+      - "5432:5432"
+
+volumes:
+  zenmoneydb:
+
